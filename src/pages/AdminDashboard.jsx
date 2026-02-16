@@ -35,14 +35,14 @@ const AdminDashboard = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const isAuthenticated = localStorage.getItem('isAdminAuthenticated');
+        const isAuthenticated = sessionStorage.getItem('isAdminAuthenticated');
         if (!isAuthenticated) {
             navigate('/admin');
         }
     }, [navigate]);
 
     const handleLogout = () => {
-        localStorage.removeItem('isAdminAuthenticated');
+        sessionStorage.removeItem('isAdminAuthenticated');
         navigate('/');
     };
 

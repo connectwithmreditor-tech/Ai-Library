@@ -65,6 +65,20 @@ const AddToolModal = ({ isOpen, onClose, onAdd, initialData }) => {
         onAdd(finalToolData);
     };
 
+    const handleImageUpload = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setFormData(prev => ({
+                    ...prev,
+                    logo: reader.result
+                }));
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
     return (
         <div className="modal-overlay">
             <div className="modal-content">
@@ -87,15 +101,30 @@ const AddToolModal = ({ isOpen, onClose, onAdd, initialData }) => {
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="logo">Icon URL</label>
-                        <input
-                            type="url"
-                            id="logo"
-                            name="logo"
-                            value={formData.logo}
-                            onChange={handleChange}
-                            placeholder="https://example.com/logo.png (optional)"
-                        />
+                        <label>Tool Icon</label>
+                        <div style={{ marginBottom: '10px' }}>
+                            <input
+                                type="file"
+                                accept="image/*"
+                                onChange={handleImageUpload}
+                                style={{ marginBottom: '5px' }}
+                            />
+                            <p style={{ fontSize: '0.8rem', color: '#888' }}>OR</p>
+                            <input
+                                type="url"
+                                name="logo"
+                                value={formData.logo}
+                                onChange={handleChange}
+                                placeholder="Paste Image URL..."
+                                style={{ marginTop: '5px' }}
+                            />
+                        </div>
+                        {formData.logo && (
+                            <div style={{ marginTop: '10px' }}>
+                                <p style={{ fontSize: '0.8rem', marginBottom: '5px' }}>Preview:</p>
+                                <img src={formData.logo} alt="Preview" style={{ width: '50px', height: '50px', borderRadius: '5px', objectFit: 'cover' }} />
+                            </div>
+                        )}
                     </div>
 
                     <div className="form-group">

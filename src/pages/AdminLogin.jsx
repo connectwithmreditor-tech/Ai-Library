@@ -7,10 +7,17 @@ const AdminLogin = () => {
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
+    useEffect(() => {
+        const isAuthenticated = sessionStorage.getItem('isAdminAuthenticated');
+        if (isAuthenticated) {
+            navigate('/admin/dashboard');
+        }
+    }, [navigate]);
+
     const handleLogin = (e) => {
         e.preventDefault();
         if (password === 'Abd*') {
-            localStorage.setItem('isAdminAuthenticated', 'true');
+            sessionStorage.setItem('isAdminAuthenticated', 'true');
             navigate('/admin/dashboard');
         } else {
             setError('Invalid Password');
