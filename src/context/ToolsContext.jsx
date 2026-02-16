@@ -98,8 +98,15 @@ const initialToolsData = [
 
 export const ToolsProvider = ({ children }) => {
     const [tools, setTools] = useState(() => {
-        const savedTools = localStorage.getItem('aiConfigTools');
-        return savedTools ? JSON.parse(savedTools) : initialToolsData;
+        try {
+            const savedTools = localStorage.getItem('aiConfigTools');
+            // Handle "undefined" string or null
+            if (!savedTools || savedTools === 'undefined') return initialToolsData;
+            return JSON.parse(savedTools);
+        } catch (error) {
+            console.error('Failed to parse tools from localStorage:', error);
+            return initialToolsData;
+        }
     });
 
     useEffect(() => {
