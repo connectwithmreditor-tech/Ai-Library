@@ -74,12 +74,12 @@ const AdminDashboard = () => {
 
     return (
         <div className="container">
-            <header className="library-header" style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+            <header className="library-header">
                 <div className="header-content">
                     <h1>Admin Dashboard</h1>
                     <p>Manage AI Tools and Configuration</p>
                 </div>
-                <div style={{ display: 'flex', gap: '10px' }}>
+                <div className="header-buttons admin-actions">
                     <button className="glowing-btn" style={{ background: '#4b5563' }} onClick={() => navigate('/')}>
                         Home
                     </button>
