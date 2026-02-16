@@ -1,12 +1,14 @@
 
 import React, { useState, useEffect } from 'react';
 
+
 const AddToolModal = ({ isOpen, onClose, onAdd, initialData }) => {
     const [formData, setFormData] = useState({
         name: '',
         category: 'text-generation',
         description: '',
         link: '',
+        logo: '',
         tags: ''
     });
 
@@ -14,7 +16,8 @@ const AddToolModal = ({ isOpen, onClose, onAdd, initialData }) => {
         if (initialData) {
             setFormData({
                 ...initialData,
-                tags: Array.isArray(initialData.tags) ? initialData.tags.join(', ') : initialData.tags
+                tags: Array.isArray(initialData.tags) ? initialData.tags.join(', ') : initialData.tags,
+                logo: initialData.logo || ''
             });
         } else {
             setFormData({
@@ -22,6 +25,7 @@ const AddToolModal = ({ isOpen, onClose, onAdd, initialData }) => {
                 category: 'text-generation',
                 description: '',
                 link: '',
+                logo: '',
                 tags: ''
             });
         }
@@ -44,12 +48,21 @@ const AddToolModal = ({ isOpen, onClose, onAdd, initialData }) => {
             return;
         }
 
-        onAdd({
+        // If no logo provided, use a random seed or keep existing if editing (handled by context if we don't send one, but here we likely want to send one)
+        // Actually, if it's new and no logo, ToolsContext doesn't auto-generate one anymore because we removed that logic from App.jsx and put it in Context? 
+        // Wait, Context DOES NOT generate a logo. App.jsx used to.
+        // I need to ensure a default logo is set if empty.
+
+        const finalToolData = {
             ...formData,
             tags: formData.tags.split(',').map(tag => tag.trim()).filter(tag => tag)
-        });
+        };
 
-        // Form reset happens in useEffect when modal opens/closes or initialData changes
+        if (!finalToolData.logo) {
+            finalToolData.logo = `https://picsum.photos/seed/${finalToolData.name.replace(/\s+/g, '')}${Date.now()}/50/50.jpg`;
+        }
+
+        onAdd(finalToolData);
     };
 
     return (
@@ -70,6 +83,18 @@ const AddToolModal = ({ isOpen, onClose, onAdd, initialData }) => {
                             onChange={handleChange}
                             placeholder="e.g. ChatGPT"
                             required
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="logo">Icon URL</label>
+                        <input
+                            type="url"
+                            id="logo"
+                            name="logo"
+                            value={formData.logo}
+                            onChange={handleChange}
+                            placeholder="https://example.com/logo.png (optional)"
                         />
                     </div>
 
@@ -137,5 +162,6 @@ const AddToolModal = ({ isOpen, onClose, onAdd, initialData }) => {
         </div>
     );
 };
+
 
 export default AddToolModal;

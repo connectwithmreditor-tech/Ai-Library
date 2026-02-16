@@ -80,6 +80,9 @@ const AdminDashboard = () => {
                     <p>Manage AI Tools and Configuration</p>
                 </div>
                 <div style={{ display: 'flex', gap: '10px' }}>
+                    <button className="glowing-btn" style={{ background: '#4b5563' }} onClick={() => navigate('/')}>
+                        Home
+                    </button>
                     <button className="glowing-btn" style={{ background: '#ef4444' }} onClick={handleLogout}>
                         Logout
                     </button>
