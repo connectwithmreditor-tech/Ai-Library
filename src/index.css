@@ -623,3 +623,22 @@ body.light-theme .category-btn.active {
   background-color: #ffffff;
   color: #000000;
 }
+  
+/* Admin Button Styles */  
+.admin-btn {  
+  display: flex;  
+  align-items: center;  
+  background-color: white;  
+  color: black;  
+  padding: 8px 16px;  
+  border-radius: 8px;  
+  text-decoration: none;  
+  font-weight: 600;  
+  transition: transform 0.2s, box-shadow 0.2s;  
+  border: 1px solid rgba(255, 255, 255, 0.2);  
+}  
+  
+.admin-btn:hover {  
+  transform: translateY(-2px);  
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);  
+  background-color: #f0f0f0;  

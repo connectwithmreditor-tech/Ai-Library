@@ -116,7 +116,7 @@ function Home() {
             <ToolList tools={filteredTools} />
 
             <footer className="library-footer">
-                <p>© 2023 AI Tools Library. All rights reserved. | <a href="#/admin" style={{ color: '#666', textDecoration: 'none', marginLeft: '10px', fontSize: '0.8rem' }}>Admin</a></p>
+                <p>© 2023 AI Tools Library. All rights reserved.</p>
             </footer>
         </div>
     );
