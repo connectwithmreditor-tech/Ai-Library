@@ -128,16 +128,5 @@
             "video",
             "transcription"
         ]
-    },
-    {
-        "name": "Abdullah",
-        "category": "code-assistance",
-        "description": "a",
-        "link": "https://chat.openai.com",
-        "logo": "https://picsum.photos/seed/chatgpt/50/50.jpg",
-        "tags": [
-            "a"
-        ],
-        "id": 1771404625700
     }
 ]
