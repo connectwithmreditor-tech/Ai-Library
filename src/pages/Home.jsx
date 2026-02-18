@@ -19,7 +19,7 @@ const categoriesData = [
 ];
 
 function Home() {
-    const { tools } = useTools();
+    const { tools, loading, error } = useTools();
     const [filteredTools, setFilteredTools] = useState([]);
 
     // Initialize with a random category (excluding 'all')
@@ -114,7 +114,17 @@ function Home() {
                 onSelectCategory={setSelectedCategory}
             />
 
-            <ToolList tools={filteredTools} />
+            {loading ? (
+                <div style={{ textAlign: 'center', padding: '40px', color: 'var(--text-secondary)' }}>
+                    Loading tools...
+                </div>
+            ) : error ? (
+                <div style={{ textAlign: 'center', padding: '40px', color: '#ef4444' }}>
+                    {error}
+                </div>
+            ) : (
+                <ToolList tools={filteredTools} />
+            )}
 
             <footer className="library-footer">
                 <p>© 2023 AI Tools Library. All rights reserved.</p>

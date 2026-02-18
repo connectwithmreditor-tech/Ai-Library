@@ -7,20 +7,22 @@ const NewToolPopup = ({ tools }) => {
     const [isExiting, setIsExiting] = useState(false);
 
     useEffect(() => {
-        const latestToolId = localStorage.getItem('latestNewToolId');
-        if (!latestToolId) return;
+        if (!tools || tools.length === 0) return;
 
-        const seenToolId = localStorage.getItem('seenNewToolId');
+        // Check what the user has previously seen
+        const seenToolIds = localStorage.getItem('seenToolIds');
+        const seenSet = seenToolIds ? new Set(JSON.parse(seenToolIds)) : new Set();
 
-        // Show popup only if the user hasn't seen this specific tool yet
-        if (latestToolId !== seenToolId) {
-            const tool = tools.find(t => String(t.id) === latestToolId);
-            if (tool) {
-                setNewTool(tool);
-                // Small delay so the page loads first
-                const timer = setTimeout(() => setIsVisible(true), 800);
-                return () => clearTimeout(timer);
-            }
+        // Find the newest tool that hasn't been seen
+        // Sort by ID descending (higher ID = more recently added)
+        const sortedTools = [...tools].sort((a, b) => b.id - a.id);
+        const unseenTool = sortedTools.find(t => !seenSet.has(String(t.id)));
+
+        // Only show popup for tools that were added after initial data (id > 10)
+        if (unseenTool && unseenTool.id > 10) {
+            setNewTool(unseenTool);
+            const timer = setTimeout(() => setIsVisible(true), 1200);
+            return () => clearTimeout(timer);
         }
     }, [tools]);
 
@@ -28,12 +30,10 @@ const NewToolPopup = ({ tools }) => {
         setIsExiting(true);
         setTimeout(() => {
             setIsVisible(false);
+            // Mark ALL current tools as seen
+            const allIds = tools.map(t => String(t.id));
+            localStorage.setItem('seenToolIds', JSON.stringify(allIds));
             setNewTool(null);
-            // Mark as seen so it never shows again for this tool
-            const latestToolId = localStorage.getItem('latestNewToolId');
-            if (latestToolId) {
-                localStorage.setItem('seenNewToolId', latestToolId);
-            }
         }, 400);
     };
 
