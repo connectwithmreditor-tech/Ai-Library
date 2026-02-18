@@ -128,5 +128,16 @@
             "video",
             "transcription"
         ]
+    },
+    {
+        "name": "s",
+        "category": "text-generation",
+        "description": "ss",
+        "link": "https://chat.openai.com",
+        "logo": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQACWAJYAAD/4QAC/9sAhAAIBgYHBgUIBwcHCQkICgwUDQwLCwwZEhMPFB0aHx4dGhwcICQuJyAiLCMcHCg3KSwwMTQ0NB8nOT04MjwuMzQyAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wgARCAFeAV4DASIAAhEBAxEB/8QANQABAAIDAQEBAAAAAAAAAAAAAAYHAQQFAwIIAQEAAgMBAQAAAAAAAAAAAAAAAgMBBQYEB//aAAwDAQACEAMQAAAAwLvnYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA3EtNLelj2wBYOkzC3Y4+fGCsAAAAAAAAAAAAAAAB0etaUdxG5R9odMcrjoy1D+ij3+P1fvF9SRr9AQaznq4Z+ZaDLGQGAAAAAAAAAAAAEg4t142u36IxX1W3W/H87OSDOtA3LAr+wY7mZvn6r6vmbO0Q1tHrmIRELmxLX0AtKtZ85rjPiAAAAAAAAAO3MMe7nWNq7VfWaFKzCET50JacSZdHJvMupDotfYciG468cgkdnophyuIlp+11IiYtiT0BII7i4ORt7kd9RWpb9Q2cdgZ8AAAAAAA20viy+t16+qMR/G0kJjFlJc36+bvn7q6t3x2PAkr4h1X3qROv86yWQz5Wc2NxTprG52PfCn38Z14Mdi4qFsCO9sCsLP5EN1Swt4gAAAAADNuw+0odK1PWncbDY0Od0Z8pd+M4q7mgcZxd89611UrdVfTx6tenF5a0Jap9ySxY7SHT33isOglau52t0q4t0q/P62K6s5nmbmmz4r++ub0qfoFH8+Sxq3hQz5wAAABupWz2sZp7+A17v6FvFOjzujmi78ZxT31A4zi7571rqpW6q+nqeLzHsS10MseQa8dzt8jpeWNhVHAm8Ls4z429RnyWZMqB7EN7d",
+        "tags": [
+            "s"
+        ],
+        "id": 1771404277124
     }
 ]
