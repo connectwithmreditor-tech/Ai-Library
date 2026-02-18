@@ -6,6 +6,7 @@ import Stats from '../components/Stats';
 import Search from '../components/Search';
 import Categories from '../components/Categories';
 import ToolList from '../components/ToolList';
+import NewToolPopup from '../components/NewToolPopup';
 
 const categoriesData = [
     { id: 'all', name: 'All Categories', icon: '🌐' },
@@ -118,6 +119,8 @@ function Home() {
             <footer className="library-footer">
                 <p>© 2023 AI Tools Library. All rights reserved.</p>
             </footer>
+
+            <NewToolPopup tools={tools} />
         </div>
     );
 }

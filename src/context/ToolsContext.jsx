@@ -114,7 +114,10 @@ export const ToolsProvider = ({ children }) => {
     }, [tools]);
 
     const addTool = (newTool) => {
-        setTools(prev => [...prev, { ...newTool, id: Date.now() }]);
+        const toolWithId = { ...newTool, id: Date.now() };
+        setTools(prev => [...prev, toolWithId]);
+        // Store the latest added tool ID so the popup can show it to visitors
+        localStorage.setItem('latestNewToolId', String(toolWithId.id));
     };
 
     const updateTool = (id, updatedTool) => {
